@@ -103,23 +103,24 @@ export default function SimpleChatInterface() {
       console.error("Error:", error);
       let errorContent = "Sorry, there was an error processing your message.";
 
-      if (error.message.includes("Rate limit exceeded")) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      if (errorMessage.includes("Rate limit exceeded")) {
         errorContent =
           "⚠️ OpenAI quota exceeded. Please check your billing at https://platform.openai.com/account/billing";
-      } else if (error.message.includes("Invalid API key")) {
+      } else if (errorMessage.includes("Invalid API key")) {
         errorContent =
           "❌ Invalid OpenAI API key. Please check your .env file.";
-      } else if (error.message.includes("429")) {
+      } else if (errorMessage.includes("429")) {
         errorContent = "⏳ Rate limit hit. Please wait a moment and try again.";
       }
 
-      const errorMessage: Message = {
+      const errorMsg: Message = {
         id: crypto.randomUUID(),
         role: "assistant",
         content: errorContent,
         timestamp: new Date(),
       };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setIsLoading(false);
     }
