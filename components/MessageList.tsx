@@ -1,8 +1,8 @@
 // components/MessageList.tsx
-import { User, Bot, Loader2 } from 'lucide-react';
+import { User, Bot, Loader2 } from "lucide-react";
 
 interface Message {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
 }
 
@@ -24,14 +24,16 @@ export default function MessageList({ messages, isLoading }: MessageListProps) {
       {messages.map((message, index) => (
         <div
           key={index}
-          className={`flex gap-4 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
+          className={`flex gap-4 ${
+            message.role === "user" ? "flex-row-reverse" : ""
+          }`}
         >
           <div
             className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-              message.role === 'user' ? 'bg-blue-500' : 'bg-gray-700'
+              message.role === "user" ? "bg-blue-500" : "bg-gray-700"
             }`}
           >
-            {message.role === 'user' ? (
+            {message.role === "user" ? (
               <User className="w-4 h-4 text-white" />
             ) : (
               <Bot className="w-4 h-4 text-white" />
@@ -40,14 +42,12 @@ export default function MessageList({ messages, isLoading }: MessageListProps) {
 
           <div
             className={`flex-1 max-w-3xl px-4 py-3 rounded-2xl ${
-              message.role === 'user'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-900'
+              message.role === "user"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-100 text-gray-900"
             }`}
           >
-            <div className="whitespace-pre-wrap">
-              {message.content}
-            </div>
+            <div className="whitespace-pre-wrap">{message.content}</div>
           </div>
         </div>
       ))}

@@ -47,7 +47,10 @@ export async function POST(req: Request) {
           console.log("❌ Groq API error:", aiResponse.status, errorText);
         }
       } catch (e) {
-        console.log("❌ Groq fetch failed:", e instanceof Error ? e.message : String(e));
+        console.log(
+          "❌ Groq fetch failed:",
+          e instanceof Error ? e.message : String(e)
+        );
       }
     } else {
       console.log("⚠️ No Groq API key found");
@@ -125,7 +128,10 @@ export async function POST(req: Request) {
           console.log("❌ Google AI error:", googleResponse.status, errorText);
         }
       } catch (e) {
-        console.log("❌ Google AI failed:", e instanceof Error ? e.message : String(e));
+        console.log(
+          "❌ Google AI failed:",
+          e instanceof Error ? e.message : String(e)
+        );
       }
     }
 
@@ -156,7 +162,10 @@ export async function POST(req: Request) {
           });
         }
       } catch (e) {
-        console.log("Cohere failed, trying next API...", e instanceof Error ? e.message : String(e));
+        console.log(
+          "Cohere failed, trying next API...",
+          e instanceof Error ? e.message : String(e)
+        );
       }
     }
 
@@ -219,7 +228,10 @@ export async function POST(req: Request) {
         }
       }
     } catch (e) {
-      console.log("Hugging Face failed, trying next API...", e instanceof Error ? e.message : String(e));
+      console.log(
+        "Hugging Face failed, trying next API...",
+        e instanceof Error ? e.message : String(e)
+      );
     }
 
     // 4. Try OpenAI (if user has credits)
@@ -254,7 +266,10 @@ export async function POST(req: Request) {
           });
         }
       } catch (e) {
-        console.log("OpenAI failed", e instanceof Error ? e.message : String(e));
+        console.log(
+          "OpenAI failed",
+          e instanceof Error ? e.message : String(e)
+        );
       }
     }
 

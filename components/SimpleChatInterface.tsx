@@ -103,7 +103,8 @@ export default function SimpleChatInterface() {
       console.error("Error:", error);
       let errorContent = "Sorry, there was an error processing your message.";
 
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
       if (errorMessage.includes("Rate limit exceeded")) {
         errorContent =
           "⚠️ OpenAI quota exceeded. Please check your billing at https://platform.openai.com/account/billing";
